@@ -6,6 +6,6 @@ using System.Text;
 namespace Domain
 {
     public class Class1
-    {
+    { 
     }
 }
