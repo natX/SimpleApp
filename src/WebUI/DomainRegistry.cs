@@ -1,6 +1,7 @@
 ﻿using Domain.Abstract;
 using Domain.Concrete;
 using StructureMap.Configuration.DSL;
+using StructureMap.Pipeline;
 
 namespace WebUI
 {
@@ -9,7 +10,7 @@ namespace WebUI
     {
         public DomainRegistry()
         {
-            For<IProductsRepository>().Use<FakeProductsRepository>();
+            For<IProductsRepository>().Use<FakeProductsRepository>(); 
         }
     }
 }

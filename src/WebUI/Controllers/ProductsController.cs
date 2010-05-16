@@ -12,15 +12,30 @@ namespace WebUI.Controllers
         : Controller
     {
         private IProductsRepository _productsRepository;
+        int _pageSize;
 
         public ProductsController(IProductsRepository repository)
         {
             _productsRepository = repository;
+            _pageSize = 4;
         }
 
-        public ViewResult List()
+        public int PageSize
         {
-            return View(_productsRepository.Products.ToList());
+            get {
+                return _pageSize;
+            }
+            set {
+                _pageSize = value;
+            }
+        }
+
+        public ViewResult List(int page)
+        {
+            return View(_productsRepository.Products
+                            .Skip((page - 1)*PageSize)
+                            .Take(PageSize)
+                            .ToList());
         }
     }
 }
